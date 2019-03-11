@@ -1,0 +1,7 @@
+{
+  "name": "Aptcom",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

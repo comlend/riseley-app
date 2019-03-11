@@ -1,0 +1,89 @@
+<!--
+  Generated template for the ServiceCenterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-buttons start style="width:30px" (click)="back()">
+      <button ion-button icon-only style="width:30px">
+        <ion-icon name="arrow-back" color="secondary"></ion-icon>
+         &nbsp;&nbsp;
+      </button>
+    </ion-buttons>
+    <ion-title>SERVICE CENTER</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="paddingtop">
+  </div>
+  <ion-list *ngIf="userType != 'admin'">
+    <button ion-item (tap)="newRequestcommon()">
+      Report a Problem
+    </button>
+  </ion-list>
+  <!-- <ion-list *ngIf="userType != 'admin'">
+    <button ion-item (tap)="newRequestApt()">
+      Report a Problem in my apartment
+    </button>
+  </ion-list> -->
+
+  <ion-list style="margin-top:3em !important">
+		<div *ngFor="let user of users">
+		<ion-list-header style="margin-top:-15px; text-align:center" *ngIf="user.userType == 'admin'">
+			Building Manager
+		</ion-list-header>
+		
+			<button ion-item *ngIf="user.userType == 'admin'" (tap)="goToNeighbour(user)">
+				{{user.firstName}} {{user.lastName}}
+				<span class="spanclass">Building Manager</span>
+			</button>
+		</div>
+  </ion-list>
+  
+  <!-- <ion-list style="margin-top:3em !important">
+      <ion-list-header style="margin-top:-15px; text-align:center">
+        Services
+      </ion-list-header>
+        <button ion-item>
+            Electrical
+        </button>
+        <button ion-item>
+            Plumbing
+        </button>
+        <button ion-item>
+            Air Conditioning
+        </button>
+    </ion-list> -->
+
+        <!-- in progress requests -->
+  <!-- <ion-list>
+    <p class="serv-req" *ngIf="inProgressReqs.length > 0">Requests in progress</p>
+    <div *ngFor="let serviceReq of inProgressReqs; let i=index">
+    <button ion-item *ngIf="i <=inProgArrayLength" (tap)="serviceReqDetail(serviceReq)">
+      <h4>{{serviceReq.title}}</h4>
+      <span class="newsspan">{{serviceReq.date}}</span>
+    </button>
+    </div>
+    <p class="serv-req-more" *ngIf="inProgressReqs.length > 4 && !allInProgressReqsShown" (tap)="fullInProgressReqArray()">Show More</p>
+  </ion-list> -->
+    <!-- completed requests list -->
+  <!-- <ion-list>
+      <p class="serv-req" *ngIf="completedReqs.length > 0">Completed requests</p>
+      <div *ngFor="let serviceReq of completedReqs; let i=index">
+        <button ion-item *ngIf="i <=completedArrayLength " (tap)="serviceReqDetail(serviceReq)">
+          <h4>{{serviceReq.title}}</h4>
+          <span class="newsspan">{{serviceReq.date}}</span>
+        </button>
+      </div>
+    <p class="serv-req-more" *ngIf="completedReqs.length > 4 && !allCompletedReqsShown" (tap)="fullCompletedReqArray()">Show More</p>
+  </ion-list>
+   -->
+ 
+
+</ion-content>

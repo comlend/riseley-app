@@ -1,0 +1,6 @@
+<ion-tabs [selectedIndex]='tabIndex'>
+  <ion-tab [root]="tab3Root" tabTitle="News" tabIcon="paper-outline"></ion-tab>
+  <ion-tab [root]="tab1Root" [tabBadge]="unreadMessages>0 ? unreadTabBadge : null" tabBadgeStyle="danger" tabTitle="Messages" tabIcon="text-outline"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Neighbours" tabIcon="people-outline"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="More" tabIcon="menu"></ion-tab>
+</ion-tabs>

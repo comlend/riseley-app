@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "257675727271",
+    "firebase_url": "https://riseley-st.firebaseio.com",
+    "project_id": "riseley-st",
+    "storage_bucket": "riseley-st.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257675727271:android:2fbc200b17d69e68",
+        "android_client_info": {
+          "package_name": "com.apt.risleyst"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257675727271-jqj5ero1c1npfc2hpgidv572e4d5onoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzoj1PY9pkkR1ohlNNL3o9hmKWU26CLoY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

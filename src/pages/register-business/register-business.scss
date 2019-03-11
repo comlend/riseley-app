@@ -1,0 +1,50 @@
+page-register-business {
+    .buttonspadding {
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-bottom: 1em !important; // position: bottom;
+        // bottom: 0;
+    }
+    .firstitem {
+        margin-top: 1em;
+    }
+    .itemstyle {
+        margin-top: 10px !important;
+    }
+    .itemstyle2 {
+        margin-top: -16px !important;
+    }
+    ion-footer {
+        background-color: #EFEFF4;
+        border-top-color: #EFEFF4;
+    }
+    img {
+        min-height: 72px;
+        min-width: 72px;
+    }
+    .col {
+        padding: 0px;
+    }
+    .error-message {
+        color: red;
+        font-size: 10px;
+        text-align: left;
+        padding-left: 16px;
+    }
+    textarea.text-input.text-input-ios {
+        height: 60px;
+    }
+    ion-col {
+        position: initial;
+    }
+    .passwordlabel {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #A1ABB6;
+    }
+    .policylabel {
+        font-size: 1em;
+        color: #A1ABB6;
+        margin-bottom: 4em;
+    }
+}

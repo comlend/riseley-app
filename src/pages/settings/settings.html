@@ -1,0 +1,36 @@
+<ion-header>
+
+	<ion-navbar hideBackButton>
+		<ion-buttons start style="width:30px" (click)="back()">
+			<button ion-button icon-only style="width:30px">
+				<ion-icon name="arrow-back" color="secondary"></ion-icon>
+				&nbsp;&nbsp;
+			</button>
+		</ion-buttons>
+		<ion-title>SETTINGS</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<div class="paddingtop"></div>
+	<ion-list>
+		<ion-item detail-push tappable (tap)="editProfile()">
+			<ion-avatar item-start>
+				<img [src]='profileurl' class="profileImg">
+			</ion-avatar>
+			<span style="font-size:20px">{{userData.firstName}} {{userData.lastName}}</span>
+			<p item-end style="font-size: 13px;color: blue;margin: 0px;">Edit</p>
+		</ion-item>
+	</ion-list>
+	<ion-list>
+		<button ion-item (tap)="goToNotifications()">Notifications</button>
+		<button ion-item (click)="blockUsers()">Blocked Users</button>
+		<button ion-item (click)="TncPage()">About</button>
+		<button ion-item (click)="TncPage()">Terms and Conditions</button>
+		<button ion-item (click)="privacyPage()">Privacy Policy</button>
+	</ion-list>
+	<button ion-button full color="white" (click)="logOut()">LOG OUT</button>
+
+</ion-content>

@@ -1,0 +1,96 @@
+<!--
+  Generated template for the MessagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-navbar hideBackButton>
+		<!-- <ion-row align-items-center>
+			<ion-col col-2>
+				<ion-buttons start>
+					<button ion-button icon-only (click)="back()">
+						<ion-icon name="arrow-back" color="secondary"></ion-icon>
+					</button>
+				</ion-buttons>
+			</ion-col>
+			<ion-col col-8 style="text-align:center">
+				<h3></h3>
+			</ion-col>
+			<ion-col col-2>
+				<ion-item no-lines style="padding:0px;background-color:transparent !important">
+					<ion-avatar item-end style="display: inline-block;float:right;">
+						<img [src]="neighbourData.profileurl">
+					</ion-avatar>
+				</ion-item>
+			</ion-col>
+		</ion-row> -->
+	<ion-buttons start style="width:30px" (click)="back()">
+		<button ion-button icon-only style="width:30px">
+			<ion-icon name="arrow-back" color="secondary"></ion-icon>
+			&nbsp;&nbsp;
+		</button>
+	</ion-buttons>
+	<ion-title>{{neighbourData.firstName}}</ion-title>
+	</ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content #content>
+	<div #messageDiv id="messageDiv">
+	<ion-item no-lines *ngFor="let chat of chats; let i = index" text-wrap>
+		<div class="spanclass" *ngIf="chat.sentby == neighbourData.uId">{{chat.timestamp | lastMsgTime}}</div>
+		<div class="userchatmsg" *ngIf="chat.sentby == neighbourData.uId">
+
+			<ion-avatar item-start style="display: inline-block;float: left;">
+				<img [src]="neighbourData.profileurl"/>
+			</ion-avatar>
+
+			<span *ngIf="chat.type == 'text'" class="userchatmsg left-msg" [innerHTML]="chat.message">
+				<!-- {{chat.message}} -->
+			</span>
+			<img class="chatimageleft" src="{{chat.message}}" *ngIf="chat.type == 'image'"/>
+			<!-- </div> *ngIf="userId == chat.sentby"-->
+			
+		</div>
+
+		<div class="userchatmsg" *ngIf="chat.sentby == userId" style="float: right;">
+			<ion-avatar item-end style="display: inline-block;float: right;">
+				<img [src]="userProfile">
+			</ion-avatar>
+
+			<span *ngIf="chat.type == 'text'" class="userchatmsg right-msg" [innerHTML]="chat.message">
+				</span>
+			<img class="chatimageright" src="{{chat.message}}" *ngIf="chat.type == 'image'"/>
+		</div>
+
+		<p *ngIf="chat.sentby == userId" style="position: relative;clear: both;float: right;font-size: 9px;right: 65px;">{{ chat.status }}</p>
+	</ion-item>
+
+</div>
+
+</ion-content>
+<ion-footer>
+	<div #footer id="footer">
+	<ion-row align-items-center>
+		<ion-col col-2 style="text-align:center" (click)="uploadPic()">
+			<ion-icon class="attachicon" ios="ios-camera-outline" md="md-camera"></ion-icon>
+			<form>
+				<input hidden id="avatar" name="file" type="file" (change)="upload()">
+			</form>
+		</ion-col>
+		<ion-col col-8>
+			<!-- <div contenteditable="true"></div> -->
+			<ion-item no-lines class="footer">
+				
+				<textarea #chatMessage [rows]="messageRow" (keyup)="resize()" type="text" [(ngModel)]="chat" placeholder="New Message" id = "myInput"></textarea>
+			</ion-item>
+		</ion-col>
+		<ion-col col-2>
+			<button ion-button clear type="submit" style="padding-left:0px" tappable (click)="addnewmessage(chat,'text'); sendChatNotification(chat)">Send</button>
+		</ion-col>
+	</ion-row>
+</div>
+</ion-footer>

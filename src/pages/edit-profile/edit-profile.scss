@@ -1,0 +1,48 @@
+page-edit-profile {
+    .paddingtop {
+        margin-top: 2em !important;
+    } // span.button-inner {
+    //     color: red;
+    // }
+    .profileImg {
+        width: 56px !important;
+        height: 56px !important;
+    }
+    .newsspan {
+        color: #A1ABB6;
+        font-size: 11px;
+        text-align: left; // padding-left: 16px;
+    }
+    .newsspan2 {
+        color: #A1ABB6;
+        font-size: 0.75em;
+        text-align: left; // padding-left: 16px;
+    }
+    .col-style {
+        padding: 0px !important;
+        border-bottom: 0.55px solid #c8c7cc;
+        border-top: 0.55px solid #c8c7cc;
+        .item-ios.item-block .item-inner {
+            border-bottom: 0px;
+        }
+        .item-md.item-block .item-inner {
+            border-bottom: 0px;
+        }
+    }
+    .no-border {
+        .item-ios.item-block .item-inner {
+            border-bottom: 0px;
+        }
+        .item-md.item-block .item-inner {
+            border-bottom: 0px;
+        }
+    }
+
+    #bizTextarea {
+        width: calc(100% - 10px);
+        resize: none;
+        border: 0;
+        background: transparent;
+        border-radius: 0;
+    }
+}

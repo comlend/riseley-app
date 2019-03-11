@@ -1,0 +1,81 @@
+<!--
+  Generated template for the FbprofilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+   <ion-navbar hideBackButton>
+  <ion-buttons start style="width:30px" (click)="back()">
+    <button ion-button icon-only style="width:30px">
+      <ion-icon name="arrow-back" color="secondary"></ion-icon>
+      &nbsp;&nbsp;
+    </button>
+  </ion-buttons>
+ 
+   <ion-title>COMPLETE PROFILE</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+	<ion-list class="firstitem">
+      <ion-row>
+        <ion-col col-4>
+          <ion-item>
+            <ion-avatar item-start>
+                <img [src]='fbData.photoURL'>
+             </ion-avatar>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item><p>{{fbData.displayName}}</p>
+          </ion-item>
+          <ion-item>
+          	<p>{{fbData.email}}</p>
+          </ion-item>
+        </ion-col>
+        </ion-row>
+    </ion-list>
+    <ion-list radio-group [(ngModel)]="userType">
+
+		  <ion-item>
+		    <ion-label>Owner - I live in the property</ion-label>
+		    <ion-radio checked="true" value="owner"></ion-radio>
+		  </ion-item>
+
+		  <ion-item>
+		    <ion-label>Owner - I rent it out</ion-label>
+		    <ion-radio value="ownerRent"></ion-radio>
+		  </ion-item>
+
+		   <ion-item>
+		    <ion-label>I am Renting</ion-label>
+		    <ion-radio value="rent"></ion-radio>
+		  </ion-item>
+
+		  <ion-item>
+		    <ion-label>I am a Business Owner</ion-label>
+		    <ion-radio value="business"></ion-radio>
+		  </ion-item>
+
+		</ion-list>
+    <ion-list>
+      <ion-item *ngIf="userType == 'owner' || userType == 'ownerRent' || userType == 'rent'">
+            <ion-input placeholder="Unit Number" [(ngModel)]="unit" type="number">
+              </ion-input>
+      </ion-item>
+      <ion-item *ngIf="userType == 'business'">
+            <ion-input placeholder="Business Name" [(ngModel)]="unit" type="text">
+              </ion-input>
+      </ion-item>
+    </ion-list>
+    
+
+</ion-content>
+<ion-footer>
+  <div class="buttonspadding">
+        <button ion-button block type="submit" (click)="signupUser()">Complete Sign up</button>
+    </div>
+  </ion-footer>

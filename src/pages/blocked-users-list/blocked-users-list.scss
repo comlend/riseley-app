@@ -1,0 +1,26 @@
+page-blocked-users-list {
+    .blocked-list-wrapper {
+        ion-list-header {
+            ion-label {
+                margin-bottom: 0;
+                color: gray;
+                text-align: center;
+            }
+        }
+    }
+
+    .add-new {
+        margin-top: 1em;
+       ion-label {
+          color: color($colors, secondary);
+       }
+
+       .msg {
+          color: gray;
+          font-size: 0.8em;
+          margin-top: 4px;
+          margin-left: 16px;
+
+       }
+    }
+}

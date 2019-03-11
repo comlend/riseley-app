@@ -1,0 +1,39 @@
+<ion-header>
+
+	<ion-navbar hideBackButton>
+		<ion-buttons start>
+			<button ion-button icon-only (click)="back()">
+				<ion-icon name="arrow-back" color="secondary"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>Blocked</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<div class="add-new">
+		<ion-list no-lines>
+			<ion-item (tap)="addBlockedUser()" tappable>
+				<ion-label>Add New...</ion-label>
+			</ion-item>
+			<p class="msg">
+				Blocked contacts will no longer be able to send you messages.
+			</p>
+		</ion-list>
+	</div>
+
+	<div class="blocked-list-wrapper" *ngIf="blockedNeighbours.length > 0">
+		<ion-list>
+				<ion-item *ngFor="let neighbour of blockedNeighbours">
+						<ion-avatar item-start>
+							<img src="{{ neighbour.profileurl }}">
+						</ion-avatar>
+						<p>{{ neighbour.firstName }} {{ neighbour.lastName }}</p>
+						<button ion-button outline small item-end color="danger" (tap)="unblockNeighbour(neighbour)">Unblock</button>
+				</ion-item>
+				
+		</ion-list>
+	</div>
+</ion-content>

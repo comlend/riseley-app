@@ -1,0 +1,29 @@
+<ion-header>
+
+	<ion-navbar hideBackButton>
+		<ion-title>Block Contact</ion-title>
+		<ion-buttons end>
+			<button ion-button clear medium color="secondary" (tap)="back()">Cancel</button>
+		</ion-buttons>
+	</ion-navbar>
+
+	<ion-searchbar [(ngModel)]="query" [showCancelButton]="shouldShowCancel" (ionInput)="onInputSearch($event)" (ionCancel)="onCancelSearch($event)">
+	</ion-searchbar>
+
+</ion-header>
+
+
+<ion-content>
+	<div class="paddingtop"></div>
+	<div *ngIf="neighbours.length == 0" style="padding-left:16px">No Neighbours Yet!</div>
+	<div class="neighbours-list-wrapper" *ngIf="neighbours.length > 0">
+		<ion-list no-lines *ngFor="let neighbour of neighbours">
+				<ion-item tappable (tap)="blockNeighbour(neighbour)">
+					<ion-avatar item-start>
+						<img src="{{ neighbour.profileurl }}">
+					</ion-avatar>
+					<p>{{ neighbour.firstName }} {{ neighbour.lastName }}</p>
+				</ion-item>
+		</ion-list>
+	</div>
+</ion-content>

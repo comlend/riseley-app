@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar hideBackButton>
+	<ion-buttons start style="width:30px" (click)="back()">
+		<button ion-button icon-only style="width:30px">
+			<ion-icon name="arrow-back" color="secondary"></ion-icon>
+			&nbsp;&nbsp;
+		</button>
+	</ion-buttons>
+ 
+   <ion-title>REGISTER</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<div class="paddingtop"> 
+	<ion-list no-lines>
+
+			<button ion-item (click)="owner()">I am an owner</button>
+		</ion-list>
+		<ion-list no-lines>
+			<button ion-item (click)="renting()">I am renting</button>
+		</ion-list>
+		<ion-list no-lines>
+			<button ion-item (click)="business()">I am a local business</button>
+		</ion-list>
+		<ion-list no-lines class="buildingmanager">
+			<button ion-item (click)="admin()">I am the building manager</button>
+		</ion-list>
+</div>
+
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+
+<ion-navbar hideBackButton>
+  <ion-buttons start style="width:30px" (click)="back()">
+    <button ion-button icon-only style="width:30px">
+      <ion-icon name="arrow-back" color="secondary"></ion-icon>
+      &nbsp;&nbsp;
+    </button>
+  </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="paddingtop">
+  </div>
+	<ion-list>
+    <p class="serv-req">MESSAGE NOTIFICATIONS</p>
+    <ion-item>
+      <ion-label>Show Notifications</ion-label>
+      <ion-toggle color="secondary" [(ngModel)]="sendMessageNotifications" (ionChange)="changeMessageNotificationSettings($event)"></ion-toggle>
+    </ion-item>
+    <ion-item detail-push>Sound
+      <span item-end>Tri-tone</span>
+    </ion-item>
+  </ion-list>
+	<ion-list>
+    <p class="serv-req">NEWS NOTIFICATIONS</p>
+    <ion-item>
+      <ion-label> Show Notifications</ion-label>
+      <ion-toggle color="secondary" [(ngModel)]="subscribedToNews" (ionChange)="changeSubscription($event)"></ion-toggle>
+    </ion-item>
+  </ion-list>
+	<ion-list>
+    <ion-item>
+      <ion-label> Show Preview</ion-label>
+      <ion-toggle color="secondary" [(ngModel)]="showMessagePreview" (ionChange)="changeMessagePreview($event)"></ion-toggle>
+    </ion-item>
+    <p class="serv-req">Preview message text inside new message notifications.</p>
+  </ion-list>
+	
+</ion-content>

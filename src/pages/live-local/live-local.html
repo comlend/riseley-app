@@ -1,0 +1,72 @@
+<!--
+  Generated template for the LiveLocalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton>
+  <ion-buttons start style="width:30px" (click)="back()">
+    <button ion-button icon-only style="width:30px">
+      <ion-icon name="arrow-back" color="secondary"></ion-icon>
+      &nbsp;&nbsp;
+    </button>
+  </ion-buttons>
+    <ion-title>LIVE LOCAL</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="secondary" (click)="addLocal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-row>
+    <ion-col padding col-12 text-right (click)="addLocal()"><span style="color:#64abc5">Add your busines or service&nbsp;&nbsp;</span><ion-icon color="secondary" name="arrow-forward"></ion-icon></ion-col>
+  </ion-row>
+  <ion-list>
+    <ion-item *ngFor="let localItem of locals" class="itemstyle" no-lines>
+      <ion-row align-items-center>
+        <ion-col col-2>
+            <img [src]=localItem.picUrl>
+        </ion-col>
+        <ion-col col-10>
+          <ion-row>
+            <ion-col col-9>
+              <h5>{{localItem.firstName}} {{localItem.lastName}}</h5>
+              <span class="newsspan">Unit {{localItem.unit}} - <b>{{localItem.localName}}</b></span>
+      
+            </ion-col>
+            <ion-col col-3 style="text-align:right">
+              <span class="newsspan">
+                {{localItem.timeofPost | lastMsgTime}}
+              </span>
+            </ion-col>
+          </ion-row>
+      
+      
+      
+        </ion-col>
+      
+      </ion-row>
+      <ion-row>
+        <p style="white-space:normal " class="elipsis">{{localItem.local}}</p>
+      </ion-row>
+     
+      <ion-row *ngIf="userId != localItem.uId" class="dividertop">
+        <ion-col col-8>
+        </ion-col>
+        <ion-col col-4>
+          <button ion-button outline small tappable (tap)="goToMessage(localItem)">Message</button>
+          <!-- <p class="newsspan2">Message</p> -->
+        </ion-col>
+      </ion-row>
+      
+     
+    </ion-item>
+  </ion-list>
+
+</ion-content>

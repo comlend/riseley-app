@@ -1,0 +1,22 @@
+<ion-content text-center>
+	<div class="splash">
+   <img src="assets/imgs/164Riseley_Logo.png">
+ 	</div>
+	<img src="assets/imgs/RiseleyStreetElevationExisting.jpg" class="signupimage">
+  <div>
+			<div class="singinbuttonspadding">
+				<button ion-button small color="login" block icon-start (click)="register()">
+					<ion-icon name="mail"></ion-icon>Sign up with email</button>
+				<!-- <button ion-button block (click)="register()">Sign up with email</button> -->
+				<button ion-button small color="facebook" block icon-start (click)="facebookLogin()">
+					<ion-icon name="logo-facebook"></ion-icon>Sign up with Facebook</button>
+				<p>Or</p>
+			</div>
+	</div>
+	
+	<div class="singinbuttonspadding">
+		<button ion-button small color="login" block icon-start (click)="login()"><ion-icon name="mail"></ion-icon>Sign in with email</button>
+		<button ion-button small color="facebook" block icon-start (click)="facebookLogin()"><ion-icon name="logo-facebook"></ion-icon>Sign in with Facebook</button>
+	</div>
+
+</ion-content>

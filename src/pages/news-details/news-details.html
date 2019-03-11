@@ -1,0 +1,135 @@
+<!--
+  Generated template for the NewsDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>
+  <ion-buttons start style="width:30px" (click)="back()">
+    <button ion-button icon-only style="width:30px">
+      <ion-icon name="arrow-back" color="secondary"></ion-icon>
+      &nbsp;&nbsp;
+    </button>
+  </ion-buttons>
+    <ion-title>Post</ion-title>
+    <ion-buttons end *ngIf="newsDetails.uId == userId">
+      <button *ngIf="!editNews" ion-button color="secondary" (click)="edit()">
+        Edit
+      </button>
+      <button *ngIf="editNews" ion-button color="secondary" (click)="saveData()">
+        Save
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-item no-lines>
+    <ion-row align-items-start>
+      <ion-col col-2 style="padding:0 !important">
+        <ion-avatar item-start>
+          <img [src]=newsDetails.profileurl>
+        </ion-avatar>
+      </ion-col>
+      <ion-col col-10>
+        <h5>{{newsDetails.firstName}} {{newsDetails.lastName}}</h5>
+        <span class="newsspan">Unit {{newsDetails.unit}}</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!editNews">
+      <p style="white-space:normal;padding-top:10px ">{{newsDetails.news}}</p>
+    </ion-row>
+    <ion-row>
+      <textarea *ngIf="editNews" type="text" [(ngModel)]="newsDetails.news" style="overflow:hidden;width:100%;border:none"></textarea>
+    </ion-row>
+    <div text-center *ngIf="newsDetails.newspic != 'Default'" style="padding-top:1em">
+      <img [src]=newsDetails.newspic />
+    </div>
+
+
+    <div style="padding-top:1em" *ngIf="newsDetails.custNewsData != undefiend">
+      <p>{{newsDetails.custNewsData.likesNumber}}
+        <span *ngIf="newsDetails.custNewsData.likesNumber == 1">like</span>
+        <span *ngIf="newsDetails.custNewsData.likesNumber > 1">likes</span>
+        <span *ngIf="newsDetails.custNewsData.commentsNumber && newsDetails.custNewsData.likesNumber">,</span>
+        <span *ngIf="newsDetails.custNewsData.commentsNumber">{{newsDetails.custNewsData.commentsNumber}}</span>
+        <span *ngIf="newsDetails.custNewsData.commentsNumber == 1">comment</span>
+        <span *ngIf="newsDetails.custNewsData.commentsNumber > 1">comments</span>
+      </p>
+    </div>
+    <div class="divider">
+    </div>
+    <ion-row>
+      <ion-col col-2 style="text-align:left;padding-left:0px !important;">
+        <!-- <p>Like</p> -->
+        <p class="likedclass" tappable (tap)="removeLike(new)" *ngIf="newsDetails.postLiked">Liked</p>
+
+        <p class="newsspan2" tappable (tap)="addLike(new)" *ngIf="!newsDetails.postLiked">Like</p>
+      </ion-col>
+      <ion-col col-3 style="text-align:left" tappable (tap)="goToMessage(new)" *ngIf="userId != newsDetails.uId">
+        <p class="newsspan2">Message</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-row *ngIf="noComments">
+      <p class="newsspan">No comments yet. Add one!</p>
+      <div class="divider">
+      </div>
+  </ion-row> -->
+
+    <div *ngIf="!noComments">
+      <ion-item no-lines *ngFor="let comment of allComments" style="padding-left:0px !important;">
+        <ion-avatar item-start style="min-width:0px !important;min-height:0px !important;">
+          <img style="width:28px;height:28px" [src]=comment.profileurl>
+        </ion-avatar>
+        <h6 style="font-size:0.7em">
+          {{comment.firstName}} {{comment.lastName}}
+        </h6>
+        <img *ngIf="comment.commentPic != 'Default'" [src]='comment.commentPic' style="max-height:100px;margin-top: 10px;" />
+        <p class="newsspan2" style="white-space:normal">{{comment.comment}}</p>
+      </ion-item>
+
+    </div>
+
+
+
+  </ion-item>
+</ion-content>
+
+
+
+
+
+<ion-footer>   
+  <div #footer id="footer">
+  
+    <div *ngIf="hasCommentPhoto">
+      <img style="max-height:100px;padding-left: 10px;padding-top: 10px" [src]="commentPicUrl" />
+    </div>
+    <ion-row align-items-center>
+      <ion-col col-2 style="text-align:center" (click)="uploadPic()">
+        <ion-icon class="attachicon" ios="ios-camera-outline" md="md-camera"></ion-icon>
+        <form>
+          <input hidden id="avatar" name="file" type="file" (change)="upload()">
+        </form>
+      </ion-col>
+      <ion-col col-8>
+        <ion-item no-lines class="footer">
+          <textarea #commentInput [rows]="commentRow" (keyup)="resize()" type="text" [(ngModel)]="comment" placeholder="Comment on this Post"
+            id="myInput" (input)="hasComment()"></textarea>
+          <!-- <ion-input type="text" [(ngModel)]="comment" placeholder="Comment on this Post" (input)="hasComment()"></ion-input> -->
+        </ion-item>
+      </ion-col>
+      <ion-col col-2 style="text-align:left">
+        <button ion-button clear (click)="addComment()" style="padding-left:0px" [disabled]="hasNoComment">Post</button>
+        <!-- <p></p> -->
+      </ion-col>
+    </ion-row>
+  
+  </div>
+</ion-footer>

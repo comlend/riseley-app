@@ -1,0 +1,52 @@
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <ion-buttons start style="width:30px" (click)="back()">
+            <button ion-button icon-only style="width:30px">
+                <ion-icon name="arrow-back" color="secondary"></ion-icon>
+                &nbsp;&nbsp;
+            </button>
+        </ion-buttons>
+
+        <ion-title>LOGIN</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+    <div class="paddingtop">
+
+        <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+           <ion-list>
+                    <ion-item>
+                        <ion-input #email formControlName="email" placeholder="Email Address" [(ngModel)]="user.email" type="email" (input)="clearErrors()"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-input #password formControlName="password" placeholder="Password"[(ngModel)]="user.password" type="password" (input)="clearErrors()" (input)="checkPassLength()"></ion-input>
+                    </ion-item>
+
+
+        </ion-list>
+        <ion-label class="passwordlabel" *ngIf="showPassError">Minimum 6 characters</ion-label>
+        
+        <div class="error-message" *ngIf="returnInvalid">
+                        Unable to Login, please check credentials provided
+        </div>
+        </form>
+
+    </div>
+
+<div class="loginpadding" text-center>
+    <button ion-button block type="submit" (click)="loginUser()">Log In</button>
+    <p class="reset" (click)="resetPass()">Reset Password</p>
+</div>
+</ion-content>
+<!-- <ion-footer text-center> -->
+    
+    <!-- <button ion-button block (click)="resetPass()">rEESETT</button> -->
+
+   
+
+<!-- </ion-footer> -->

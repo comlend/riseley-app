@@ -1,0 +1,26 @@
+<ion-header>
+
+<ion-navbar hideBackButton>
+  <ion-buttons start style="width:30px" (click)="back()">
+    <button ion-button icon-only style="width:30px">
+      <ion-icon name="arrow-back" color="secondary"></ion-icon>
+      &nbsp;&nbsp;
+    </button>
+  </ion-buttons>
+  <ion-title>{{details.name}}</ion-title>
+</ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="ws" [innerHtml]="details.text"></div>
+  <hr>
+  <div *ngIf="details.pdf">
+    <!-- <button ion-button (click)> </button> -->
+    <ion-item no-padding no-lines *ngFor="let pdf of details.pdf; let i = index">
+      <button ion-button small outline (click)="openPdf(pdf.pdf)">View PDF {{i+1}}</button>
+    </ion-item>
+  </div>
+</ion-content>

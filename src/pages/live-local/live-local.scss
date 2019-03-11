@@ -1,0 +1,33 @@
+page-live-local {
+    .itemstyle {
+        margin-top: 10px !important;
+    }
+    .newsspan {
+        color: #A1ABB6;
+        font-size: 10px;
+        text-align: left; // padding-left: 16px;
+        // margin-top: -2em;
+    }
+    .newsspan2 {
+        color: #A1ABB6;
+        font-size: 0.75em;
+        text-align: left; // padding-left: 16px;
+    }
+    .elipsis {
+        display: block;
+        display: -webkit-box;
+        max-height: 70px;
+        -webkit-line-clamp: 4 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    .paddingtop {
+        margin-top: 15px;
+    }
+    .dividertop {
+        border-top: solid #f2f2f2 0.25px;
+        margin-top: 15px;
+        // margin-bottom: 10px;
+    }
+}

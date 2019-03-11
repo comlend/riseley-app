@@ -1,0 +1,36 @@
+page-login {
+    .scroll-content {
+        background-color: #EFEFF4;
+    }
+    .paddingtop {
+        margin-top: 2.5em !important;
+    }
+    .loginpadding {
+        margin-top: 7em !important;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
+    ion-footer {
+        background-color: #EFEFF4;
+    }
+    .reset {
+        color: #0DACC8;
+        font-size: 12px;
+    }
+    .footer-md::before {
+        height: 0px;
+    }
+    .error-message {
+        color: red;
+        font-size: 10px;
+        text-align: left;
+        padding-left: 16px;
+        margin-top: -2em;
+    }
+    .passwordlabel {
+        font-size: 1em;
+        padding-left: 16px;
+        color: #A1ABB6;
+        margin-top:-2em;
+    }
+}

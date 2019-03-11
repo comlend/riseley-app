@@ -1,0 +1,91 @@
+<ion-header>
+
+	<ion-navbar hideBackButton>
+		<ion-buttons start style="width:30px" (click)="back()">
+			<button ion-button icon-only style="width:30px">
+				<ion-icon name="arrow-back" color="secondary"></ion-icon>
+				&nbsp;&nbsp;
+			</button>
+		</ion-buttons>
+		<ion-title>Edit Profile</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only color="secondary" (click)="updateDetails()" [disabled]="valueChange">
+				Update
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-list>
+		<ion-item>
+			<ion-avatar item-start text-center (click)="editPhoto()">
+				<img id="pImage" [src]='profileurl' class="profileImg">
+				<span style="font-size: 11px;margin: 0px;color:blue">edit</span>
+				<form>
+					<input hidden id="avatar" name="file" type="file" (change)="upload()">
+				</form>
+			</ion-avatar>
+			<p item-end style="font-size: 12px;margin: 0px;margin-top: -10px;">Enter your name and add an optional profile picture</p>
+		</ion-item>
+		<ion-item>
+			<ion-input type="text" [(ngModel)]="fullName" (ionChange)="valueChanged($event, 'name')"></ion-input>
+		</ion-item>
+	</ion-list>
+
+	<ion-list>
+		<ion-list-header>
+			<span class="newsspan">Phone Number</span>
+		</ion-list-header>
+		<ion-item no-lines>
+			<ion-input type="phone" [(ngModel)]="userData.phone" placeholder="+61 414 386 772" (ionChange)="valueChanged($event, 'number')"></ion-input>
+		</ion-item>
+	</ion-list>
+	<ion-list *ngIf="userData.userType != 'business'">
+		<ion-list-header>
+			<span class="newsspan">Unit Number</span>
+		</ion-list-header>
+		<ion-item no-lines>
+			<ion-input type="phone" [(ngModel)]="userData.unit" placeholder="101" (ionChange)="valueChanged($event, 'unit')"></ion-input>
+		</ion-item>
+	</ion-list>
+	<ion-list>
+		<ion-list-header>
+			<span class="newsspan">EMAIL</span>
+		</ion-list-header>
+		<ion-item no-lines>
+			{{userData.email}}
+			<!-- <ion-input type="phone" [(ngModel)]="userData.email"></ion-input> -->
+		</ion-item>
+	</ion-list>
+	<ion-list *ngIf="userData.userType == 'business'">
+		<ion-list-header>
+			<span class="newsspan">Business Name</span>
+		</ion-list-header>
+		<ion-item no-lines>
+			<ion-input type="text" [(ngModel)]="userData.name" placeholder="Business name" (ionChange)="valueChanged($event, 'bizName')"></ion-input>
+		</ion-item>
+	</ion-list>
+	<ion-list *ngIf="userData.userType == 'business'">
+		<ion-list-header>
+			<span class="newsspan">Business Details</span>
+		</ion-list-header>
+		<ion-item no-lines>
+			<!-- <ion-textarea type="text" [(ngModel)]="userData.details" placeholder="Business name" (ionChange)="valueChanged($event, 'bizDetails')"></ion-textarea> -->
+
+			<textarea #bizTextarea id="bizTextarea" [(ngModel)]="userData.details" placeholder="Business Details" (input)="valueChanged($event, 'bizDetails')" (keyup)="resizeTextarea()"></textarea>
+		</ion-item>
+		
+	</ion-list>
+
+	<ion-list>
+		<ion-list-header></ion-list-header>
+		<ion-item no-lines>
+			<ion-label>Hide My Profile</ion-label>
+			<ion-toggle color="secondary" (ionChange)="hideMyProfile($event)"></ion-toggle>
+		</ion-item>
+	</ion-list>
+
+</ion-content>

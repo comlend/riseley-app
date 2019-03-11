@@ -1,0 +1,103 @@
+page-message {
+    .scroll-content {
+        background-color: #FFF;
+    }
+    .userchatmsg {
+        border-radius: 20px;
+        display: inline-block;
+        position: relative;
+        margin-left: 5px;
+        margin-right:5px;
+        margin-bottom:2px;
+        margin-top:2px; // max-width: 80%;
+        .left-msg {
+            float: left;
+            padding: 8px 18px;
+            background: #EFEFF4;
+            max-width: 70%;
+        }
+        .right-msg {
+            float: right;
+            background: #0B8ECC;
+            color: #fff;
+            padding: 8px 18px;
+            max-width: 70%;
+        }
+    }
+    .attachicon {
+        font-size: 2.2em;
+        color: grey;
+    }
+    ion-footer {
+        background-color: #EFEFF4;
+    }
+    ion-item{
+        .label {
+            margin: 0;
+        }
+    }
+    ion-item.footer {
+        border-radius: 10px;
+        border: solid 0.5px #b2b2b2 !important; // .item-ios {
+        //     border-radius: 10px !important;
+        //     border: solid 0.5px #b2b2b2 !important;
+        // }
+        // .item-md {
+        //     border-radius: 10px;
+        //     border: solid 0.5px #b2b2b2 !important;
+        // }
+    }
+    .chatimageright {
+        border-radius: 20px;
+        display: inline-block;
+        position: relative;
+        width: 70%;
+        float: right !important;
+        padding-right: 10px;
+    }
+    .chatimageleft {
+        border-radius: 20px;
+        display: inline-block;
+        position: relative;
+        width: 70%;
+        float: left !important;
+        padding-left: 10px;
+    }
+    .spanclass {
+        padding-left: 7em;
+        font-size: 1rem;
+        line-height: normal;
+        text-overflow: inherit;
+        color: #8e9093;
+    }
+    #myInput {
+        width: calc(100% - 10px);
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        height: 20px;
+    }
+    .item-block {
+        min-height: 2.2em;
+    }
+    .footer {
+        .label-ios {
+            margin: 0px;
+        }
+    }
+    #footer {
+        bottom: 0 !important;
+        width: 100%;
+        background-color: #EFEFF4;
+        position: absolute;
+        transition: 0.3s;
+    }
+    #messageDiv {
+        margin-bottom: 72px !important;
+        width: 100%;
+        padding-top:5px;
+        // position: absolute;
+        // transition: 0.3s;
+        overflow: auto;
+    }
+}

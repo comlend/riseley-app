@@ -1,0 +1,116 @@
+
+<ion-header>
+
+ <ion-navbar hideBackButton>
+	<ion-buttons start style="width:30px" (click)="back()">
+		<button ion-button icon-only style="width:30px">
+			<ion-icon name="arrow-back" color="secondary"></ion-icon>
+			&nbsp;&nbsp;
+		</button>
+	</ion-buttons>
+ 
+   <ion-title>REGISTER</ion-title>
+<ion-buttons end>
+	<button ion-button icon-only color="secondary" (click)="signupUser()" [disabled]="!signupForm.valid">
+		Sign up
+	</button>
+</ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<form [formGroup]="signupForm" novalidate>
+
+		<ion-list class="firstitem">
+			<ion-row>
+				<ion-col col-4>
+					<ion-item no-lines>
+						<ion-avatar item-start (click)="uploadImage()">
+							<img id="pImage" [src]="profileurl">
+						  <!-- <img [src]='profileurl'> -->
+						<form>
+							<input hidden id="avatar" name="file" type="file" accept="image/gif, image/jpeg, image/png" (change)="upload()">
+						</form>
+					   </ion-avatar>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item>
+					 	<ion-input #firstName type="text" value="" formControlName="firstName" placeholder="First Name"></ion-input>
+					</ion-item>
+					<ion-item>
+					 	<ion-input #lastName type="text" value="" formControlName="lastName" placeholder="Last Name"></ion-input>
+					</ion-item>
+				</ion-col>
+				</ion-row>
+				<!-- <div class="error-message" *ngIf="returnInvalid && !picUploaded">
+					Please upload an image
+				</div> -->
+				<button ion-button small outline color="secondary" (click)="uploadImage()">Add Profile Pic</button>
+		</ion-list>
+		<ion-list>
+			
+			<ion-item no-lines class="itemstyle2">
+
+				<ion-input #email formControlName="email" placeholder="Email" [(ngModel)]="user.email" type="email">
+					</ion-input>
+			</ion-item>
+			<div class="error-message" *ngIf="returnInvalid">
+				<p>{{errormessage}}</p>
+			</div>
+			<ion-item no-lines class="itemstyle">
+				<ion-input #password formControlName="password" placeholder="Password" [(ngModel)]="user.pass" type="password" (input)="checkPassLength()">
+				</ion-input>
+			</ion-item>
+			<ion-label class="passwordlabel" *ngIf="showPassError">Minimum 6 characters</ion-label>
+			<ion-item no-lines class="itemstyle">
+		
+				<ion-input #unit formControlName="mobile" placeholder="Mobile Number" [(ngModel)]="user.mobile" type="tel" (input)="checkVal()">
+				</ion-input>
+			</ion-item>
+			<div class="error-message">
+				<span *ngIf="!signupForm.controls.mobile.valid && returnInvalid">Please enter mobile number</span>
+			</div>
+			<ion-item no-lines class="itemstyle">
+
+				<ion-input #unit formControlName="unit" placeholder="Unit Number" [(ngModel)]="user.unit" type="number" (input)="checkVal()">
+					</ion-input>
+			</ion-item>
+			<div class="error-message">
+				<span *ngIf="!signupForm.controls.unit.valid && returnInvalid">Please enter unit number</span>
+			</div>
+
+			<div radio-group>
+
+			<ion-item no-lines class="itemstyle">
+				<ion-label>I live in the property</ion-label>
+				<ion-radio checked="true" value="go"></ion-radio>
+			</ion-item>
+
+			<ion-item no-lines class="itemstyle">
+				<ion-label>I rent it out</ion-label>
+				<ion-radio value="rust"></ion-radio>
+			</ion-item>
+			</div>
+		</ion-list>
+
+		
+	</form>
+<div class="buttonspadding">
+	<button ion-button style="padding-left:16px" block type="submit" (click)="signupUser()">Sign up</button>
+</div>
+<div text-center no-lines class="policylabel">
+	<p>
+		By signing up, you agree to our
+		<br>
+		<span (click)="gotoTerms()">
+			<b>Terms</b>
+		</span> &
+		<span (click)="gotoPolicy()">
+			<b>Privacy Policy</b>
+		</span>
+	</p>
+</div>
+</ion-content>

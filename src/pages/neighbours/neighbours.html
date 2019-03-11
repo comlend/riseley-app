@@ -1,0 +1,81 @@
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>MY NEIGHBOURS</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-list class="firstitem">
+		<ion-list-header style="margin-top:-25px; text-align:center">
+			Neighbours
+		</ion-list-header>
+		<div *ngFor="let user of users">
+			<!-- <ion-item *ngIf="user.userType == 'renting'" (click)="goToNeighbour(user)">
+				<ion-avatar item-start>
+					<img [src]=user.profileurl>
+				</ion-avatar>
+				 {{user.firstName}} {{user.lastName}}
+				<span class="spanclass">Unit {{user.unit}}</span>
+			</ion-item> -->
+			<button ion-item *ngIf="user.userType == 'renting'" (click)="goToNeighbour(user)">
+				<ion-avatar item-start>
+					<img [src]='user.profileurl'>
+				</ion-avatar>
+				{{user.firstName}} {{user.lastName}}
+				<!-- <span class="spanclass">Unit {{user.unit}}</span> -->
+			</button>
+			<button ion-item *ngIf="user.userType == 'owner'" (tap)="goToNeighbour(user)">
+				<ion-avatar item-start>
+					<img [src]='user.profileurl'>
+				</ion-avatar>
+				{{user.firstName}} {{user.lastName}}
+				<!-- <span class="spanclass">Unit {{user.unit}}</span> -->
+			</button>
+		</div>
+	</ion-list>
+	<!-- <ion-list style="margin-top:-25px !important">
+		<div *ngFor="let user of users">
+		<ion-list-header style="margin-top:-15px; text-align:center" *ngIf="user.userType == 'admin'">
+			Building Manager
+		</ion-list-header>
+		
+			<button ion-item *ngIf="user.userType == 'admin'" (tap)="goToNeighbour(user)">
+				{{user.firstName}} {{user.lastName}}
+				<span class="spanclass">Building Manager</span>
+			</button>
+		</div>
+	</ion-list> -->
+	<ion-list style="margin-top:-25px !important">
+		<ion-list-header style="margin-top:-15px; text-align:center" *ngIf="hasBusiness">		
+			Local Businesses
+		</ion-list-header>
+
+		<div *ngFor="let user of users">			
+			<button ion-item *ngIf="user.userType == 'business'" (tap)="goToBusiness(user)">
+				<ion-avatar item-start>
+					<img [src]='user.profileurl'>
+				</ion-avatar>
+				{{user.firstName}} {{user.lastName}}
+				<span class="spanclass">{{user.name}}</span>
+			</button>
+		</div>
+	</ion-list>
+	<!-- <ion-list style="margin-top:-25px !important">
+		<ion-list-header style="margin-top:-15px; text-align:center">
+			Services
+		</ion-list-header>
+			<button ion-item>
+				 Electrical
+			</button>
+			<button ion-item>
+				 Plumbing
+			</button>
+			<button ion-item>
+				 Air Conditioning
+			</button>
+	</ion-list> -->
+
+</ion-content>

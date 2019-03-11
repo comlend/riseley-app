@@ -1,0 +1,76 @@
+<ion-header>
+
+  <ion-navbar>
+		<ion-buttons start>
+			<button ion-button clear small color="secondary" (click)="doEditable()" *ngIf="!editable">
+				Edit
+			</button>
+			<button ion-button clear small color="secondary" (click)="undoEditable()" *ngIf="editable">
+				Done
+			</button>
+		</ion-buttons>
+
+		<ion-title>MESSAGES</ion-title>
+
+		<ion-buttons end>
+			<button ion-button icon-only color="secondary" (click)="goToMyNeighbours()" *ngIf="!editable">
+				<ion-icon name="add"></ion-icon>
+			</button>
+
+			<button ion-button clear small color="danger" (click)="deleteSelecTedChats()" *ngIf="editable && chatsToDelete.length > 0">
+				Delete
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-searchbar [(ngModel)]="searchQuery" [showCancelButton]="shouldShowCancel" (ionInput)="onSearchInput($event)" (ionCancel)="onSearchCancel($event)"></ion-searchbar>
+
+	<div *ngIf="chats.length > 0">
+		<ion-list>
+			<div *ngIf="!editable">
+				<ion-item *ngFor="let chat of chats" tappable (tap)="goToChatPage(chat)" detail-push>
+					<ion-avatar item-start id="badge-container">
+						<img *ngIf="chat.receiverData.profileurl" src="{{ chat.receiverData.profileurl }}">
+						<img *ngIf="!chat.receiverData.profileurl" src="assets/imgs/imgPlaceholder.png" />
+						<ion-badge id="badge" *ngIf="chat.unreadMessages > 0" item-end>{{ chat.unreadMessages }}</ion-badge>
+					</ion-avatar>
+					<h5>{{ chat.receiverData.firstName }} {{ chat.receiverData.lastName }}</h5>
+					<p>{{ chat.lastMsg }}</p> {{chat.status}}
+
+					<p item-end style="font-size: 11px;margin: 0px;">{{ chat.lastMsgTime | lastMsgTime }}</p>
+				</ion-item>
+			</div>
+
+			<div *ngIf="editable">
+				<div *ngFor="let chat of chats">  <!-- (click)="goToChatPage(chat)" -->
+					<ion-row>
+						<ion-col col-1 style="background-color: #fff">
+							<ion-checkbox item-start (ionChange)="addChatsToDelete(chat)" style="top: 30%; padding-left: 5px !important;"></ion-checkbox>
+						</ion-col>
+						<ion-col col-11>
+							<ion-item>
+								<ion-avatar item-start id="badge-container">
+									<img src="{{ chat.receiverData.profileurl }}">
+									<ion-badge id="badge" *ngIf="chat.unreadMessages > 0" item-end>{{ chat.unreadMessages }}</ion-badge>
+								</ion-avatar>
+								<h5>{{ chat.receiverData.firstName }} {{ chat.receiverData.lastName }}</h5>
+								<p>{{ chat.lastMsg }}</p> {{chat.status}}
+
+								<!-- <span item-end>{{ chat.lastMsgTime }}</span> -->
+							</ion-item>
+						</ion-col>
+					</ion-row>
+				</div>
+			</div>			
+		</ion-list>
+	</div>	
+	<div *ngIf="chats.length == 0">
+		<div class="firstitem" text-center>
+			<h5>No Conversations</h5>
+		</div>
+	</div>
+</ion-content>
